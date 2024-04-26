@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="web.css">
+</head>
+<body>
+
+<h1><center>Welcome to SVG Image Loader</center></h1>
+
+<div class="container">
+    <div class="left">
+        <div class="left-wrapper">
+            <div class="left-content">
+
+
+                <center><p class="myText">Feel free to upload any SVG image here... :)</p></center>
+
+                <center><div class="choosefile">
+                <input type="file" id="myFile" accept=".svg" >
+                </div></center>
+        
+                <div class="input">
+                <input type="number" id="scaleInput" placeholder="Scale">
+                <input type="number" id="rotateInput" placeholder="Rotate">
+                <input type="number" id="translateXInput" placeholder="Translate X">
+                <input type="number" id="translateYInput" placeholder="Translate Y">
+                </div>
+                
+
+                <div class="button">
+                <button onclick="applyTransformations()">Apply</button>
+                <button onclick="undo()">Undo</button>
+                <button onclick="redo()">Redo</button>
+                <button onclick="reset()">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="img">
+        <div class="right-wrapper">
+            <div class="right-content">
+                <center><img id="preview" src="" alt="Image preview..." width="200" height="200"></center>
+            <img id="top-left-image" class="myImage" src="https://fablabkerala.in/logo-new.b18fc6d0.png" >
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+var transformations = [];
+var currentTransformationIndex = -1;
+
+document.getElementById('myFile').addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    var reader = new FileReader();
+    reader.onloadend = function() {
+        document.getElementById('preview').src = reader.result;
+    }
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = "";
+    }
+});
+
+function applyTransformations() {
+    var scale = document.getElementById('scaleInput').value || 1;
+    var rotate = document.getElementById('rotateInput').value || 0;
+    var translateX = document.getElementById('translateXInput').value || 0;
+    var translateY = document.getElementById('translateYInput').value || 0;
+
+    var svg = document.getElementById('preview');
+    svg.style.transform = 'scale(' + scale + ') rotate(' + rotate + 'deg) translate(' + translateX + 'px, ' + translateY + 'px)';
+
+    transformations = transformations.slice(0, currentTransformationIndex + 1);
+    transformations.push(svg.style.transform);
+    currentTransformationIndex++;
+}
+
+function undo() {
+    if (currentTransformationIndex > 0) {
+        currentTransformationIndex--;
+        document.getElementById('preview').style.transform = transformations[currentTransformationIndex];
+    }
+}
+
+function redo() {
+    if (currentTransformationIndex < transformations.length - 1) {
+        currentTransformationIndex++;
+        document.getElementById('preview').style.transform = transformations[currentTransformationIndex];
+    }
+}
+
+function reset() {
+    document.getElementById('preview').style.transform = '';
+    transformations = [];
+    currentTransformationIndex = -1;
+}
+</script>
+
+</body>
+</html>

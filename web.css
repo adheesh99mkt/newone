@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#myFile {
+    margin-top: 10px;
+    position: relative;
+    top: 50px;
+}
+
+.img {
+    margin-top: -150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+
+#preview {
+    transition: transform 1s;
+  }
+
+
+h1 {
+    font-family: 'Georgia', serif;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid #555555;
+    padding-bottom: 0.3em;
+    animation: colorchange 3s infinite;
+}
+
+@keyframes colorchange {
+    0% { color: rgb(14, 41, 83); }
+    50% { color: rgb(4, 134, 4); }
+    100% { color: rgb(210, 34, 34); }
+}
+
+
+.myText {
+    text-align: center;
+    font-size: medium;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+    color: darkblue;
+    font-weight: bolder;
+}
+
+#top-left-image {
+    position: absolute;
+    top: 100px;
+    left:10px;
+}
+
+.myImage {
+    width: 120px; 
+    height: 50px;
+}
+
+.input {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+::placeholder { 
+    color: rgb(134, 5, 5);
+}
+
+button {
+    margin-top: 20px; 
+    height: 30px;
+    width:100px;
+    margin: 0 10px 20px;
+    border-radius: 100px;
+    border: none;
+    outline: none;
+    background: rgb(190,229,176);
+    color: #111;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.choosefile {
+    margin-top: -50px;
+}
+
+
+body {
+    font-family: 'Times New Roman', Times, serif
+}
+
+.container {
+    display: flex;
+}
+
+.left{
+    background: white;
+    background-size: cover;
+    width: 50%;
+    height: 100vh;
+}
+
+
+.left-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    margin-top: 140px;
+}
+
+.right{
+    background: rgb(190,229,176,0.6);
+    background-size: cover;
+    width: 50%;
+    height: 100vh;
+}
+
+.right-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    margin-top: 200px;
+}
+
+
